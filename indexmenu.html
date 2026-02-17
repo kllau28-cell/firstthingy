@@ -1,0 +1,35 @@
+import tkinter as tk
+
+# prices
+chicken = 5.25
+beef = 6.25
+tofu = 5.75
+
+price = 0
+
+def order_sandwich(type):
+    global price
+    if type == "chicken":
+        price += chicken
+    elif type == "beef":
+        price += beef
+    elif type == "tofu":
+        price += tofu
+    
+    total_label.config(text="Total: $" + str(round(price, 2)))
+
+# Create window
+window = tk.Tk()
+window.title("Food Ordering App")
+window.geometry("300x250")
+
+tk.Label(window, text="Choose a Sandwich").pack()
+
+tk.Button(window, text="Chicken", command=lambda: order_sandwich("chicken")).pack()
+tk.Button(window, text="Beef", command=lambda: order_sandwich("beef")).pack()
+tk.Button(window, text="Tofu", command=lambda: order_sandwich("tofu")).pack()
+
+total_label = tk.Label(window, text="Total: $0")
+total_label.pack(pady=10)
+
+window.mainloop()
